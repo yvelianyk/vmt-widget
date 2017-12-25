@@ -1,2 +1,1 @@
-# vmt-widget
-Venue Mapping Tool Widget
+# Venue Mapping Tool Widget
