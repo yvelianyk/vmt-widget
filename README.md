@@ -60,7 +60,7 @@
        eventId: 123});
     ```
 2. Listen VMT Widget internal methods calling:
-    - when user checkout some tickets we need register method for it. 
+    - when user checkout some tickets(in the __picker__ mode) we need register method for it. 
     Callback function receives *token* and *tickets* parameters.\n
     Example:
     ```js
