@@ -55,7 +55,7 @@ export default class VMTContainer {
         this.options = options;
         let iframe = document.createElement('iframe');
         iframe.name = constants.IFRAME_NAME;
-        iframe.width = root.offsetWidth || root.parentElement.offsetWidth;
+        iframe.width = '100%';
         iframe.height = root.offsetHeight || constants.styles.DEFAULT_IFRAME_HEIGHT;
         iframe.frameBorder = 0;
         iframe.src = this.getIframeUrl(options);
