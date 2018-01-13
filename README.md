@@ -57,6 +57,7 @@
        venueId: 123,
        mode: 'tickets', // can be also 'picker'. If undefined it means 'edit' mode
        token: 'someAccessToken',
+       styles: 'someCssProp: 10px;', // inject custom inline css styles for iframe (optionally)
        eventId: 123});
     ```
 2. Listen VMT Widget internal methods calling:

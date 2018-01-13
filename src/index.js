@@ -14,6 +14,7 @@ export default class {
             venueId: options.venueId,
             apiPoint: options.apiPoint || constants.API_POINT,
             mode: options && options.mode,
+            styles: options.styles,
             token: options.token
         });
 
@@ -22,6 +23,10 @@ export default class {
         // ----------------------------------------------------------------------------------------------
 
         pmRpcServer.launch();
+
+        pmRpcServer.method('vmtReady', () => {
+            vmtContainer.hideSpinner();
+        });
 
         pmRpcServer.method('closeWidget', () => {
             pmRpcServer.removeMethod('toggleFullScreen');

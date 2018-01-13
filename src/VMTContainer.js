@@ -30,7 +30,7 @@ export default class VMTContainer {
             this.initialStyles = null;
         } else {
             this.initialStyles = iframe.style.cssText;
-            iframe.style.cssText = constants.styles.fullScreenStyles;
+            iframe.style.cssText = constants.styles.fullScreen;
         }
     }
 
@@ -53,18 +53,49 @@ export default class VMTContainer {
         let {root} = options;
         this.root = root;
         this.options = options;
+
         let iframe = document.createElement('iframe');
         iframe.name = constants.IFRAME_NAME;
-        iframe.width = '100%';
-        iframe.height = root.offsetHeight || constants.styles.DEFAULT_IFRAME_HEIGHT;
+        iframe.style.cssText = options.styles || constants.styles.iframe;
         iframe.frameBorder = 0;
         iframe.src = this.getIframeUrl(options);
+
+        this.showSpinner();
+
         root.appendChild(iframe);
         iframe.focus();
     }
 
     getIframeUrl({apiPoint, memberId, eventId, token, venueId, mode}) {
         return `${apiPoint}?member=${memberId}${eventId ? '&event=' + eventId : ''}&token=${token}&venue=${venueId}${mode ? '&mode=' + mode : ''}`;
+    }
+
+    showSpinner() {
+        let style = document.createElement('style');
+        style.type = 'text/css';
+        style.setAttribute('id', 'vmt-widget-spinner-styles');
+        style.innerHTML = constants.styles.spinner;
+        document.getElementsByTagName('head')[0].appendChild(style);
+
+        let spinnerDiv = document.createElement('div');
+        let loadingDiv = document.createElement('div');
+        loadingDiv.classList.add('vmt-loading');
+        spinnerDiv.classList.add('vmt-spinner');
+
+        this.root.appendChild(spinnerDiv);
+        this.root.appendChild(loadingDiv);
+    }
+
+    hideSpinner() {
+        let style = document.getElementById('vmt-widget-spinner-styles');
+        document.getElementsByTagName('head')[0].removeChild(style);
+
+        let iframe = document.getElementById(this.options.containerId);
+        let spinner = iframe.getElementsByClassName("vmt-spinner")[0];
+        let loading = iframe.getElementsByClassName("vmt-loading")[0];
+
+        this.root.removeChild(loading);
+        this.root.removeChild(spinner);
     }
 
 }
