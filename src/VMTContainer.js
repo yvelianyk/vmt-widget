@@ -78,12 +78,17 @@ export default class VMTContainer {
         document.getElementsByTagName('head')[0].appendChild(style);
 
         let spinnerDiv = document.createElement('div');
+        let bounceball = document.createElement('div');
+        let picture = document.createElement('div');
         let loadingDiv = document.createElement('div');
-        loadingDiv.classList.add('vmt-loading');
-        spinnerDiv.classList.add('vmt-spinner');
-
+        spinnerDiv.appendChild(bounceball);
+        spinnerDiv.appendChild(picture);
         this.root.appendChild(spinnerDiv);
         this.root.appendChild(loadingDiv);
+        loadingDiv.classList.add('vmt-loading');
+        spinnerDiv.classList.add('vmt-spinner');
+        bounceball.classList.add('bounceball');
+        picture.classList.add('picture');
     }
 
     hideSpinner() {
