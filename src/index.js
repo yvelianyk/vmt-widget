@@ -15,7 +15,8 @@ export default class {
             apiPoint: options.apiPoint || constants.API_POINT,
             mode: options && options.mode,
             styles: options.styles,
-            token: options.token
+            token: options.token,
+            seatslimit:options.seatslimit
         });
 
         // ----------------------------------------------------------------------------------------------

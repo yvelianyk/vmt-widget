@@ -66,8 +66,8 @@ export default class VMTContainer {
         iframe.focus();
     }
 
-    getIframeUrl({apiPoint, memberId, eventId, token, venueId, mode}) {
-        return `${apiPoint}?member=${memberId}${eventId ? '&event=' + eventId : ''}&token=${token}&venue=${venueId}${mode ? '&mode=' + mode : ''}`;
+    getIframeUrl({apiPoint, memberId, eventId, token, venueId, mode, seatslimit}) {
+        return `${apiPoint}?member=${memberId}${eventId ? '&event=' + eventId : ''}&token=${token}&venue=${venueId}${mode ? '&mode=' + mode : ''}${seatslimit ? '&seatslimit=' + seatslimit : ''}`;
     }
 
     showSpinner() {
